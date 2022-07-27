@@ -6,11 +6,12 @@ import {
 } from "native-base";
 import React from "react";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import AppColor from "../../../assets/AppColor";
-import AppText from "../../../assets/AppText";
+import AppColor from "../../assets/AppColor";
 
-const HomeTitleView = () => {
+const TitleView = (props: any) => {
   const insets = useSafeAreaInsets()
+  const titleName = props.titleName
+  const hasSearch = props.hasSearch
 
   return (
     <Box
@@ -36,23 +37,28 @@ const HomeTitleView = () => {
       >
         <Text
           fontSize = {"4xl"}
+          height = {12}
           flex = {1}
           fontWeight = "bold"
           color = {AppColor.mainTheme}
         >
-          {AppText.homeTitle}
+          {titleName}
         </Text>
-        <Image
-            source = {require("../../../assets/image/search.png")}
-            resizeMode = "contain"
-            width = {6}
-            height = {6}
-            tintColor = {AppColor.searchTint}
-            alt = "search"
-          />
+        { 
+          hasSearch && (
+            <Image
+              source = {require("../../assets/image/search.png")}
+              resizeMode = "contain"
+              width = {6}
+              height = {6}
+              tintColor = {AppColor.searchTint}
+              alt = "search"
+            />
+          )
+        }
       </HStack>
     </Box>
   )
 }
 
-export default HomeTitleView
+export default TitleView

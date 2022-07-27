@@ -5,8 +5,9 @@ const AppColor = {
   searchTint: "#000000",
   shadow: "#000000",
   tabBar: "#ffffff",
-  homeBG: "#ffffff",
-  homeTitle: "#fafafa"
+  background: "#ffffff",
+  homeTitle: "#fafafa",
+  productItem: "#ffffff"
 }
 
 export default AppColor

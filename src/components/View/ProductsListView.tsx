@@ -9,6 +9,7 @@ import {
 import React from "react";
 import Product from "../../common/Product";
 import { Dimensions } from "react-native";
+import AppColor from "../../assets/AppColor";
 
 const ProductsListView = (props: any) => {
   const {width} = Dimensions.get('window')
@@ -36,13 +37,13 @@ const ProductsListView = (props: any) => {
       }) => 
         <Box
           margin = {2}
-          bg = "white"
+          bg = {AppColor.productItem}
           width = {widthItem}
           height = {heightItem}
           borderRadius = {10}
           style = {
             {
-              shadowColor: "black",
+              shadowColor: AppColor.shadow,
               shadowOpacity: 0.2,
               shadowRadius: 10,
               shadowOffset: {
@@ -70,7 +71,7 @@ const ProductsListView = (props: any) => {
               resizeMode = "contain"
             />
             <Text
-              color = {"black"}
+              color = {AppColor.text}
               fontSize = "16"
               numberOfLines = {1}
               textAlign = "left"
@@ -96,7 +97,7 @@ const ProductsListView = (props: any) => {
                 height = {6}
                 marginRight = {2}
                 resizeMode = "contain"
-                tintColor = "#48A694"
+                tintColor = {AppColor.mainTheme}
               />
             </HStack>
           </VStack>
