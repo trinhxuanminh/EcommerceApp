@@ -1,7 +1,8 @@
 import React from 'react';
 import {
   NativeBaseProvider,
-  ColorMode
+  ColorMode,
+  StatusBar
 } from 'native-base';
 import type { StorageManager } from 'native-base';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -10,6 +11,8 @@ import {
   QueryClientProvider
 } from '@tanstack/react-query';
 import BottomTab from './src/navigators/BottomTab';
+import { Provider } from 'react-redux';
+import store from './src/reducers/store';
 
 const queryClient = new QueryClient()
 
@@ -40,15 +43,22 @@ const colorModeManager: StorageManager = {
 
 const App = () => {
   return (
-    <NativeBaseProvider
-      config = {config}
+    <Provider
+      store = {store}
     >
-      <QueryClientProvider
-        client = {queryClient}
+      <NativeBaseProvider
+        config = {config}
       >
-        <BottomTab/>
-      </QueryClientProvider>
-    </NativeBaseProvider>
+        <QueryClientProvider
+          client = {queryClient}
+        >
+          <StatusBar
+            barStyle = "dark-content"
+          />
+          <BottomTab/>
+        </QueryClientProvider>
+      </NativeBaseProvider>
+    </Provider>
   )
 }
 export default App

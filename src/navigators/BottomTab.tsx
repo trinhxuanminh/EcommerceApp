@@ -1,14 +1,18 @@
 import React from "react";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from "@react-navigation/native";
-import HomeScreen from "../components/HomeScreen";
-import CategoryScreen from "../components/CategoryScreen";
 import CartScreen from "../components/CartScreen";
 import SettingScreen from "../components/SettingScreen";
-import { VStack, Text } from "native-base";
+import { 
+  VStack, 
+  Text 
+} from "native-base";
 import FontAwesome5Icon from "react-native-vector-icons/FontAwesome5";
 import AppText from "../assets/AppText";
 import AppColor from "../assets/AppColor";
+import HomeNavigator from "./HomeNavigator";
+import CategoryNavigator from "./CategoryNavigator";
+import AppStyle from "../styles";
 
 const Tab = createBottomTabNavigator()
 
@@ -20,19 +24,19 @@ const BottomTab = () => {
           tabBarIcon: ({ focused, color, size }) => {
             var iconName: string
             switch (route.name) {
-              case AppText.homeRoute: {
+              case AppText.homeNavigator: {
                 iconName = "home"
                 break
               }
-              case AppText.categoryRoute: {
+              case AppText.categoryNavigator: {
                 iconName = "bars"
                 break
               }
-              case AppText.cartRoute: {
+              case AppText.cartNavigator: {
                 iconName = "shopping-cart"
                 break
               }
-              case AppText.settingRoute: {
+              case AppText.settingNavigator: {
                 iconName = "cog"
                 break
               }
@@ -67,38 +71,23 @@ const BottomTab = () => {
           },
           headerShown: false,
           tabBarShowLabel: false,
-          tabBarStyle: {
-            backgroundColor: AppColor.tabBar,
-            position: "absolute",
-            elevation: 0,
-            height: 90,
-            justifyContent: "center",
-            shadowColor: AppColor.shadow,
-            shadowOffset: {
-              width: 0,
-              height: -2
-            },
-            shadowOpacity: 0.1,
-            shadowRadius: 10,
-            borderTopLeftRadius: 24,
-            borderTopRightRadius: 24
-          }
+          tabBarStyle: AppStyle.CommonStyle.tabBar
         })}
       >
         <Tab.Screen
-          name = {AppText.homeRoute}
-          component = {HomeScreen}
+          name = {AppText.homeNavigator}
+          component = {HomeNavigator}
         />
         <Tab.Screen
-          name = {AppText.categoryRoute}
-          component={CategoryScreen}
+          name = {AppText.categoryNavigator}
+          component={CategoryNavigator}
         />
         <Tab.Screen
-          name = {AppText.cartRoute}
+          name = {AppText.cartNavigator}
           component = {CartScreen}
         />
         <Tab.Screen
-          name = {AppText.settingRoute}
+          name = {AppText.settingNavigator}
           component = {SettingScreen}
         />
       </Tab.Navigator>

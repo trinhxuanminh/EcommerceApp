@@ -2,31 +2,25 @@ import {
   Box,
   HStack, 
   Text,
-  Image
+  Image,
+  Pressable
 } from "native-base";
 import React from "react";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import AppColor from "../../assets/AppColor";
+import AppText from "../../assets/AppText";
+import AppStyle from "../../styles";
 
 const TitleView = (props: any) => {
   const insets = useSafeAreaInsets()
   const titleName = props.titleName
   const hasSearch = props.hasSearch
+  const navigation = props.navigation
 
   return (
     <Box
       bg = {AppColor.homeTitle}
-      style = {
-        {
-          shadowColor: AppColor.shadow,
-          shadowOpacity: 0.2,
-          shadowRadius: 10,
-          shadowOffset: {
-            width: 0,
-            height: 2
-          }
-        }
-      }
+      style = {AppStyle.CommonStyle.titleScreen}
     >
       <Box
         height = {insets.top}
@@ -34,6 +28,7 @@ const TitleView = (props: any) => {
       <HStack
         alignItems = "center"
         paddingX = {4}
+        marginBottom = {1}
       >
         <Text
           fontSize = {"4xl"}
@@ -46,14 +41,20 @@ const TitleView = (props: any) => {
         </Text>
         { 
           hasSearch && (
-            <Image
-              source = {require("../../assets/image/search.png")}
-              resizeMode = "contain"
-              width = {6}
-              height = {6}
-              tintColor = {AppColor.searchTint}
-              alt = "search"
-            />
+            <Pressable
+              onPress = {() => {
+                navigation.navigate(AppText.searchScreen)
+              }}
+            >
+              <Image
+                source = {require("../../assets/image/search.png")}
+                resizeMode = "contain"
+                width = {6}
+                height = {6}
+                tintColor = {AppColor.searchTint}
+                alt = "search"
+              />
+            </Pressable>
           )
         }
       </HStack>

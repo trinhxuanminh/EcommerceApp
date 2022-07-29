@@ -1,19 +1,21 @@
 import React from "react";
 import { 
-  Center,
+  Box,
   Spinner
 } from "native-base";
 
 const LoadingView = () => {
   return (
-    <Center
+    <Box
       flex = {1}
-      paddingBottom = {100}
+      justifyContent = "center"
+      alignItems = "center"
     >
       <Spinner
+        bottom = {60}
         accessibilityLabel = "Loading posts"
       />
-    </Center>
+    </Box>
   )
 }
 

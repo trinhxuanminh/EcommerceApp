@@ -1,20 +1,20 @@
 import React from "react";
 import {
-  Box
+  Box,
 } from "native-base";
 import AppColor from "../assets/AppColor";
-import TitleView from "./View/TitleView";
-import AppText from "../assets/AppText";
 import { useQuery } from "@tanstack/react-query";
+import TitleView from "./View/ProductsInCategory/TitleView";
 import StoreService from "../untils/StoreService";
-import LoadingView from "./View/LoadingView";
-import CategorysListView from "./View/Category/CategorysListView";
+import LoadingView from "./View/LoadingView"
+import ProductsListView from "./View/ProductsListView";
 
-const CategoryScreen = (props: any) => {
-  const { data, isLoading } = useQuery(['AllCategory'], StoreService.getAllCategory, {
+const ProductsInCategoryScreen = (props: any) => {
+  const { category } = props.route.params
+  const { data, isLoading } = useQuery(['ProductsInCategory', category], () => StoreService.getProductsInCategory(category), {
     select: data => data.data
   })
-  const categorys = data
+  const products = data
   const navigation = props.navigation
 
   return (
@@ -24,8 +24,9 @@ const CategoryScreen = (props: any) => {
       width  ="100%"
       alignSelf = "center"
     >
-      <TitleView 
-        titleName = {AppText.categoryTitle}
+      <TitleView
+        navigation = {navigation}
+        category = {category}
       />
       {
         isLoading && (
@@ -34,8 +35,8 @@ const CategoryScreen = (props: any) => {
       }
       {
         data && (
-          <CategorysListView
-            data = {categorys}
+          <ProductsListView
+            data = {products}
             navigation = {navigation}
           />
         )
@@ -44,4 +45,4 @@ const CategoryScreen = (props: any) => {
   )
 }
 
-export default CategoryScreen
+export default ProductsInCategoryScreen

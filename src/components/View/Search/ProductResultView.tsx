@@ -8,13 +8,13 @@ import {
   Pressable
 } from "native-base";
 import React from "react";
-import Product from "../../common/Product";
+import Product from "../../../common/Product";
 import { Dimensions } from "react-native";
-import AppColor from "../../assets/AppColor";
-import AppStyle from "../../styles";
-import AppText from "../../assets/AppText";
+import AppColor from "../../../assets/AppColor";
+import AppStyle from "../../../styles";
+import AppText from "../../../assets/AppText";
 
-const ProductsListView = (props: any) => {
+const ProductResultView = (props: any) => {
   const navigation = props.navigation
   const {width} = Dimensions.get('window')
   const numberColumns = 2
@@ -93,7 +93,7 @@ const ProductsListView = (props: any) => {
                   $ {item.price}
                 </Text>
                 <Image
-                  source = {require("../../assets/image/add.png")}
+                  source = {require("../../../assets/image/add.png")}
                   alt = "add"
                   width = {6}
                   height = {6}
@@ -110,4 +110,4 @@ const ProductsListView = (props: any) => {
   )
 }
 
-export default ProductsListView
+export default ProductResultView

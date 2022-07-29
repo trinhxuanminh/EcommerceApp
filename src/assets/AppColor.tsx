@@ -6,8 +6,17 @@ const AppColor = {
   shadow: "#000000",
   tabBar: "#ffffff",
   background: "#ffffff",
+  placeholder: "#808080",
   homeTitle: "#fafafa",
-  productItem: "#ffffff"
+  productItem: "#ffffff",
+  searchBackground: "#1C1C1C",
+  searchText: "#ffffff",
+  searchClose: "#ffffff",
+  searchSeparation: "#4B4B4B",
+  searchCleanText: "#CECECE",
+  price: "#FF0066",
+  addToCartDetail: "#161621",
+  addToCartText: "#ffffff"
 }
 
 export default AppColor

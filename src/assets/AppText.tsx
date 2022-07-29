@@ -1,10 +1,21 @@
 const AppText = {
   homeTitle: "Store",
   categoryTitle: "Category",
-  homeRoute: "Home",
-  categoryRoute: "Category",
-  cartRoute: "Cart",
-  settingRoute: "Setting"
+
+  homeNavigator: "Home",
+  categoryNavigator: "Category",
+  cartNavigator: "Cart",
+  settingNavigator: "Setting",
+
+  homeScreen: "HomeScreen",
+  categoryScreen: "CategoryScreen",
+  cartScreen: "CartScreen",
+  settingScreen: "SettingScreen",
+  searchScreen: "SearchScreen",
+  productsInCategoryScreen: "ProductsInCategoryScreen",
+  productDetailScreen: "ProductDetailScreen",
+
+  searchPlaceholder: "Find product..."
 }
 
 export default AppText

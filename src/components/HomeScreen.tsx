@@ -10,12 +10,12 @@ import StoreService from "../untils/StoreService";
 import AppText from "../assets/AppText";
 import LoadingView from "./View/LoadingView";
 
-const HomeScreen = () => {
-
+const HomeScreen = (props: any) => {
   const { data, isLoading } = useQuery(['AllProduct'], StoreService.getAllProduct, {
     select: data => data.data
   })
   const products = data
+  const navigation = props.navigation
 
   return (
     <Box
@@ -27,6 +27,7 @@ const HomeScreen = () => {
       <TitleView 
         titleName = {AppText.homeTitle}
         hasSearch = {true}
+        navigation = {navigation}
       />
       {
         isLoading && (
@@ -37,6 +38,7 @@ const HomeScreen = () => {
         data && (
           <ProductsListView
             data = {products}
+            navigation = {navigation}
           />
         )
       }

@@ -6,7 +6,7 @@ import {
 const CartScreen = () => {
   return (
     <Box flex={1} bg="gray.500" width="100%" alignSelf="center">
-      
+
     </Box>
   )
 }
