@@ -16,7 +16,9 @@ const AppColor = {
   searchCleanText: "#CECECE",
   price: "#FF0066",
   addToCartDetail: "#161621",
-  addToCartText: "#ffffff"
+  addToCartText: "#ffffff",
+  productResultItem: "#272727",
+  cartSeparation: "#E8E8E8"
 }
 
 export default AppColor

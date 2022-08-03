@@ -5,32 +5,26 @@ import {
   Image,
   Text,
   HStack,
-  Pressable
+  Pressable,
+  Spacer
 } from "native-base";
 import React from "react";
 import Product from "../../../common/Product";
-import { Dimensions } from "react-native";
 import AppColor from "../../../assets/AppColor";
-import AppStyle from "../../../styles";
 import AppText from "../../../assets/AppText";
 
 const ProductResultView = (props: any) => {
   const navigation = props.navigation
-  const {width} = Dimensions.get('window')
-  const numberColumns = 2
-  const insetX = 16
-  const space = 16
-  const widthItem = (width - space * (numberColumns - 1) - insetX * 2) / numberColumns
-  const heightItem = 300
+  const data = props.data
 
   return (
     <FlatList
-      data = {props.data}
+      data = {data}
       flex = {1}
       paddingTop = {2}
-      paddingX = {2}
+      paddingX = {4}
+      showsVerticalScrollIndicator = {false}
       keyExtractor = {(item: Product) => String(item.id)}
-      numColumns = {2}
       ListFooterComponent = {
         <Box
           height = {32}
@@ -47,18 +41,13 @@ const ProductResultView = (props: any) => {
           }}
         >
           <Box
-            margin = {2}
-            bg = {AppColor.productItem}
-            width = {widthItem}
-            height = {heightItem}
-            borderRadius = {10}
-            style = {AppStyle.CommonStyle.productItem}
+            flex = {1}
+            height = {150}
+            marginY = {3}
           >
-            <VStack
-              space = {1}
+            <HStack
+              flex = {1}
               alignItems = "center"
-              marginY = {2}
-              marginX = {1}
             >
               <Image
                 source = {
@@ -66,43 +55,65 @@ const ProductResultView = (props: any) => {
                     uri: item.image
                   }
                 }
+                bg = {AppColor.background}
                 alt = "product"
-                width = "100%"
-                height = {widthItem * 1.3}
+                height = {"100%"}
+                width = {150 / 1.3}
                 resizeMode = "contain"
+                borderRadius = {10}
               />
-              <Text
-                color = {AppColor.text}
-                fontSize = "16"
-                numberOfLines = {1}
-                textAlign = "left"
-                width = "100%"
-                marginTop = {2}
+              <Box
+                bg = {AppColor.productResultItem}
+                height = {109}
+                flex = {1}
+                borderRightRadius = {10}
               >
-                {item.title}
-              </Text>
-              <HStack
-                width = "100%"
-                height = {5}
-                alignItems = "center"
-              >
-                <Text
-                  color = {AppColor.price}
+                <VStack
+                  marginY = {2}
+                  marginX = {4}
                   flex = {1}
+                  space = {1}
                 >
-                  $ {item.price}
-                </Text>
-                <Image
-                  source = {require("../../../assets/image/add.png")}
-                  alt = "add"
-                  width = {6}
-                  height = {6}
-                  marginRight = {2}
-                  resizeMode = "contain"
-                  tintColor = {AppColor.mainTheme}
-                />
-              </HStack>
-            </VStack>
+                  <Text
+                    fontSize = {15}
+                    fontWeight = "semibold"
+                    numberOfLines = {2}
+                    color = {AppColor.searchText}
+                  >
+                    {item.title}
+                  </Text>
+                  <Text
+                    fontSize = {13}
+                    fontWeight = "normal"
+                    numberOfLines = {1}
+                    color = {AppColor.placeholder}
+                  >
+                    {item.category}
+                  </Text>
+                  <HStack
+                    flex = {1}
+                  >
+                    <Text
+                      fontSize = {14}
+                      fontWeight = "normal"
+                      color = {AppColor.price}
+                    >
+                      $ {item.price}
+                  </Text>
+                  <Spacer/>
+                  <Image
+                    source = {require("../../../assets/image/add.png")}
+                    alt = "add"
+                    width = {6}
+                    height = {6}
+                    resizeMode = "contain"
+                    tintColor = {AppColor.mainTheme}
+                    alignSelf = "flex-end"
+                  />
+                  </HStack>
+                </VStack>
+              </Box>
+            </HStack>
           </Box>
         </Pressable>
       }

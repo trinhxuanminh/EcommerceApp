@@ -2,6 +2,7 @@ import React from "react";
 import Service from "./Service";
 import axios from "axios";
 import Product from "../common/Product";
+import Cart from "../common/Cart";
 
 const StoreService: Service = {
   async getAllProduct() {
@@ -27,6 +28,10 @@ const StoreService: Service = {
     return products.filter((item) => {
       return item.title.toLowerCase().indexOf(query.toLowerCase()) !== -1
     })
+  },
+
+  async getUserCarts(userID: number) {
+    return axios.get(`https://fakestoreapi.com/carts/user/${userID}`)
   }
 }
 

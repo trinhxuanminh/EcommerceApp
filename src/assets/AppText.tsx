@@ -1,6 +1,7 @@
 const AppText = {
   homeTitle: "Store",
   categoryTitle: "Category",
+  cartTitle: "Cart",
 
   homeNavigator: "Home",
   categoryNavigator: "Category",

@@ -20,7 +20,7 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 const ProductDetailScreen = (props: any) => {
   const insets = useSafeAreaInsets()
   const { productID } = props.route.params
-  const { data, isLoading } = useQuery(['ProductsInCategory', productID], () => StoreService.getProductDetail(productID), {
+  const { data, isLoading } = useQuery(['ProductDetail', productID], () => StoreService.getProductDetail(productID), {
     select: data => data.data
   })
   const productDetail = data
