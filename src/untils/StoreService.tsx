@@ -1,10 +1,10 @@
-import React from "react";
 import Service from "./Service";
 import axios from "axios";
 import Product from "../common/Product";
 import Cart from "../common/Cart";
 
 const StoreService: Service = {
+
   async getAllProduct() {
     return axios.get("https://fakestoreapi.com/products")
   },
@@ -21,6 +21,10 @@ const StoreService: Service = {
     return axios.get(`https://fakestoreapi.com/products/${id}`)
   },
 
+  async getUserDetail(id: Number) {
+    return axios.get(`https://fakestoreapi.com/users/${id}`)
+  },
+
   searchProduct(products: Product[], query: string) {
     if (!query || /^\s*$/.test(query)) {
       return []
@@ -30,8 +34,25 @@ const StoreService: Service = {
     })
   },
 
-  async getUserCarts(userID: number) {
-    return axios.get(`https://fakestoreapi.com/carts/user/${userID}`)
+  getUserCarts(carts: Cart[], userId: number) {
+    if (isNaN(userId)) {
+      return []
+    }
+    return carts.filter((cart) => {
+      return cart.userId == userId
+    })
+  },
+
+  getProductLengthInCart(carts: Cart[], userId: number) {
+    if (isNaN(userId)) {
+      return 0
+    }
+    const userCarts = this.getUserCarts(carts, userId)
+    var count = 0
+    userCarts.map((cart) => {
+      count += cart.products.length
+    })
+    return count
   }
 }
 

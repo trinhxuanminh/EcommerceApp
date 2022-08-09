@@ -1,11 +1,11 @@
 import React from "react";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from "@react-navigation/native";
-import CartScreen from "../components/CartScreen";
-import SettingScreen from "../components/SettingScreen";
 import { 
   VStack, 
-  Text 
+  Text, 
+  ZStack,
+  Center
 } from "native-base";
 import FontAwesome5Icon from "react-native-vector-icons/FontAwesome5";
 import AppText from "../assets/AppText";
@@ -13,10 +13,18 @@ import AppColor from "../assets/AppColor";
 import HomeNavigator from "./HomeNavigator";
 import CategoryNavigator from "./CategoryNavigator";
 import AppStyle from "../styles";
+import CartNavigator from "./CartNavigator";
+import { useSelector } from "react-redux";
+import StoreService from "../untils/StoreService";
+import SettingNavigator from "./SettingNavigator";
 
 const Tab = createBottomTabNavigator()
 
 const BottomTab = () => {
+  const userId = useSelector((state: any) => state.users.userId)
+  const carts = useSelector((state: any) => state.carts.value)
+  const cartBadge = StoreService.getProductLengthInCart(carts, userId)
+
   return (
     <NavigationContainer>
       <Tab.Navigator
@@ -48,14 +56,41 @@ const BottomTab = () => {
             return (
               <VStack
                 alignItems = "center"
-                space = {1}
                 top = {1}
               >
-                <FontAwesome5Icon
-                  name = {iconName}
-                  color = {focused ? AppColor.mainTheme : AppColor.deselectTab}
-                  size = {20}
-                />
+                <ZStack
+                  height = {10}
+                  width = {10}
+                  paddingTop = {3}
+                  alignItems = "center"
+                  justifyContent = "center"
+                >
+                  <FontAwesome5Icon
+                    name = {iconName}
+                    color = {focused ? AppColor.mainTheme : AppColor.deselectTab}
+                    size = {20}
+                  />
+                  {
+                    userId && (route.name == AppText.cartNavigator) && (
+                      <Center
+                        bg = {AppColor.cartBadge}
+                        width = {5}
+                        height = {5}
+                        top = {2}
+                        right = {0}
+                        borderRadius = {10}
+                      >
+                        <Text
+                          fontWeight = "semibold"
+                          fontSize = {11}
+                          color = "white"
+                        >
+                          {cartBadge}
+                        </Text>
+                      </Center>
+                    )
+                  }
+                </ZStack>
                 {
                   focused && (
                     <Text
@@ -84,11 +119,11 @@ const BottomTab = () => {
         />
         <Tab.Screen
           name = {AppText.cartNavigator}
-          component = {CartScreen}
+          component = {CartNavigator}
         />
         <Tab.Screen
           name = {AppText.settingNavigator}
-          component = {SettingScreen}
+          component = {SettingNavigator}
         />
       </Tab.Navigator>
     </NavigationContainer>

@@ -5,17 +5,29 @@ import {
   Image,
   Pressable
 } from "native-base";
-import React from "react";
+import React, { useState } from "react";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { useDispatch } from "react-redux";
 import AppColor from "../../assets/AppColor";
 import AppText from "../../assets/AppText";
+import { changedDeleteCart } from "../../reducers/appStates/appStatesSlice";
 import AppStyle from "../../styles";
 
 const TitleView = (props: any) => {
+  const dispatch = useDispatch()
   const insets = useSafeAreaInsets()
   const titleName = props.titleName
-  const hasSearch = props.hasSearch
   const navigation = props.navigation
+  const hasSearch = props.hasSearch
+  const hasDelete = props.hasDelete
+  const hasCancel = props.hasCancel
+
+  const handleSetDelete = (isDelete: Boolean) => {
+    const action = changedDeleteCart({
+      isDeleteCart: isDelete
+    })
+    dispatch(action)
+  } 
 
   return (
     <Box
@@ -51,8 +63,43 @@ const TitleView = (props: any) => {
                 resizeMode = "contain"
                 width = {6}
                 height = {6}
+                marginTop = {3}
                 tintColor = {AppColor.searchTint}
                 alt = "search"
+              />
+            </Pressable>
+          )
+        }
+        { 
+          hasDelete && (
+            <Pressable
+              onPress = {() => handleSetDelete(true)}
+            >
+              <Image
+                source = {require("../../assets/image/deleteCart.png")}
+                resizeMode = "contain"
+                width = {6}
+                height = {6}
+                marginTop = {3}
+                tintColor = {AppColor.searchTint}
+                alt = "delete"
+              />
+            </Pressable>
+          )
+        }
+        { 
+          hasCancel && (
+            <Pressable
+              onPress = {() => handleSetDelete(false)}
+            >
+              <Image
+                source = {require("../../assets/image/cancel.png")}
+                resizeMode = "contain"
+                width = {6}
+                height = {6}
+                marginTop = {3}
+                tintColor = {AppColor.searchTint}
+                alt = "cancel"
               />
             </Pressable>
           )

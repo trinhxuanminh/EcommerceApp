@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { 
   Box, 
   HStack,
@@ -10,22 +10,30 @@ import {
 import AppColor from "../../../assets/AppColor";
 import AppText from "../../../assets/AppText";
 import { Keyboard } from "react-native";
-import { searched } from "../../../reducers/filters/filtersSlice";
+import { searched } from "../../../reducers/appStates/appStatesSlice";
 import { useDispatch } from "react-redux";
 
 const SearchView = () => {
   const dispatch = useDispatch()
   const [query, setQuery] = React.useState("")
 
-  const handleChange = (newQuery: string) => setQuery(newQuery)
-
-  const handleSubmitEditing = () => {
-    Keyboard.dismiss
+  const handleUpdateQuery = (newQuery: string) => {
     const action = searched({
-      query: query
+      query: newQuery
     })
     dispatch(action)
   }
+
+  const handleSubmitEditing = () => {
+    Keyboard.dismiss
+    handleUpdateQuery(query)
+  }
+
+  useEffect(() => {
+    return () => {
+      handleUpdateQuery("")
+    }
+  }, [])
 
   const handleCleanText = () => {
     Keyboard.emit
@@ -53,8 +61,8 @@ const SearchView = () => {
             placeholder = {AppText.searchPlaceholder}
             placeholderTextColor = {AppColor.placeholder}
             fontSize = {18}
-            color = {AppColor.searchText}
-            onChangeText = {handleChange}
+            color = {AppColor.darkText}
+            onChangeText = {setQuery}
             returnKeyType = "search"
             onSubmitEditing = {handleSubmitEditing}
             defaultValue = {query}

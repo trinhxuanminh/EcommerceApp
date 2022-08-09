@@ -45,6 +45,19 @@ const CommonStyle = StyleSheet.create(
         width: 0,
         height: 2
       }
+    },
+    blurView: {
+      width: "100%",
+      height: "100%"
+    },
+    deleteCartImage: {
+      shadowColor: AppColor.deleteCart,
+      shadowOpacity: 1,
+      shadowRadius: 15,
+      shadowOffset: {
+        width: 0,
+        height: 0
+      }
     }
   }
 )

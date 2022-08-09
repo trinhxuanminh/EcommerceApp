@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import AppColor from "../assets/AppColor";
 import { 
   Box,
@@ -16,11 +16,13 @@ import LoadingView from "./View/LoadingView";
 import { Rating } from "react-native-ratings";
 import AppStyle from "../styles";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import AddProductView from "./View/AddProductView";
 
 const ProductDetailScreen = (props: any) => {
   const insets = useSafeAreaInsets()
-  const { productID } = props.route.params
-  const { data, isLoading } = useQuery(['ProductDetail', productID], () => StoreService.getProductDetail(productID), {
+  const [showAddView, setShowAddView] = useState(false)
+  const { productId } = props.route.params
+  const { data, isLoading } = useQuery(['ProductDetail', productId], () => StoreService.getProductDetail(productId), {
     select: data => data.data
   })
   const productDetail = data
@@ -43,7 +45,7 @@ const ProductDetailScreen = (props: any) => {
           )
         }
         {
-          data && (
+          productDetail && (
             <ScrollView
               width = "100%"
               height = "100%"
@@ -122,7 +124,7 @@ const ProductDetailScreen = (props: any) => {
           )
         }
         {
-          data && (
+          productDetail && (
             <Box
               bg = {
                 {
@@ -158,15 +160,19 @@ const ProductDetailScreen = (props: any) => {
                   >
                     Add to cart
                   </Text>
-                  <Image
-                    source = {require("../assets/image/addToCart.png")}
-                    alt = "add"
-                    width = {6}
-                    height = {6}
-                    marginTop = {1}
-                    marginRight = {15}
-                    resizeMode = "contain"
-                  />
+                  <Pressable
+                    onPress = {() => setShowAddView(!showAddView)}
+                  >
+                    <Image
+                      source = {require("../assets/image/addToCart2.png")}
+                      alt = "add"
+                      width = {6}
+                      height = {6}
+                      marginTop = {1}
+                      marginRight = {15}
+                      resizeMode = "contain"
+                    />
+                  </Pressable>
                 </HStack>
               </Box>
             </Box>
@@ -188,6 +194,15 @@ const ProductDetailScreen = (props: any) => {
             alt = "search"
           />
         </Pressable>
+
+        {
+          showAddView && productDetail && (
+            <AddProductView
+              product = {productDetail}
+              hideView = {() => setShowAddView(!showAddView)}
+            />
+          )
+        }
       </ZStack>
     </Box>
   )

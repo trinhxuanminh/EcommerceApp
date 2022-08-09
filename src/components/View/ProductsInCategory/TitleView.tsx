@@ -39,7 +39,7 @@ const TitleView = (props: any) => {
             width = {6}
             height = {6}
             tintColor = {AppColor.searchTint}
-            alt = "search"
+            alt = "back"
           />
         </Pressable>
         <Text

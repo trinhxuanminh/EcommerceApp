@@ -1,8 +1,12 @@
 import { combineReducers } from 'redux'
-import { filtersReducer } from './filters/filtersSlice'
+import { appStatesReducer } from './appStates/appStatesSlice'
+import { cartsReducer } from './carts/cartsSlice'
+import { usersReducer } from './users/usersSlice'
 
 const rootReducer = combineReducers({
-  filters: filtersReducer
+  users: usersReducer,
+  appStates: appStatesReducer,
+  carts: cartsReducer
 })
 
 export default rootReducer

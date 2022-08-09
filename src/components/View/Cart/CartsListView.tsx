@@ -57,7 +57,8 @@ const CartsListView = (props: any) => {
               renderItem = {(item2) => (
                 <ProductInCartView
                   navigation = {navigation}
-                  productID = {item2.item.productId}
+                  cartId = {item.id}
+                  productInCart = {item2.item}
                 />
               )}
             />

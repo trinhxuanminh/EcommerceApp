@@ -14,7 +14,7 @@ import StoreService from "../untils/StoreService";
 import LoadingView from "./View/LoadingView";
 
 const SearchScreen = (props: any) => {
-  const query = useSelector((state: any) => state.filters.query)
+  const query = useSelector((state: any) => state.appStates.query)
   const navigation = props.navigation
 
   const { data, isLoading } = useQuery(['AllProduct', query], StoreService.getAllProduct, {

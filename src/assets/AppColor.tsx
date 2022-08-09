@@ -10,7 +10,7 @@ const AppColor = {
   homeTitle: "#fafafa",
   productItem: "#ffffff",
   searchBackground: "#1C1C1C",
-  searchText: "#ffffff",
+  darkText: "#ffffff",
   searchClose: "#ffffff",
   searchSeparation: "#4B4B4B",
   searchCleanText: "#CECECE",
@@ -18,7 +18,11 @@ const AppColor = {
   addToCartDetail: "#161621",
   addToCartText: "#ffffff",
   productResultItem: "#272727",
-  cartSeparation: "#E8E8E8"
+  cartSeparation: "#E8E8E8",
+  cartBadge: "#ff0000",
+  deleteCart: "#ff0000",
+  deleteToast: "#ff0000",
+  addToast: "#00ff00"
 }
 
 export default AppColor

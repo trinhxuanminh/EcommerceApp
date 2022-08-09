@@ -5,21 +5,14 @@ import {
   Pressable
 } from "native-base";
 import AppColor from "../../../assets/AppColor";
-import { searched } from "../../../reducers/filters/filtersSlice";
-import { useDispatch } from "react-redux";
 
 const CloseView = (props: any) => {
-  const dispatch = useDispatch()
   const navigation = props.navigation
 
   return (
     <Box>
       <Pressable
         onPress = {() => {
-          const action = searched({
-            query: ""
-          })
-          dispatch(action)
           navigation.goBack()
         }}
       >

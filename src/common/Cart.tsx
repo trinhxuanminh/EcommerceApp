@@ -2,7 +2,7 @@ import React from "react";
 
 interface Cart {
   id: number,
-  userID: number,
+  userId: number,
   date: string,
   products: Array<{
     productId: number,

@@ -1,42 +1,56 @@
 import React from "react";
 import {
-  Box
+  Box, 
+  Center,
+  Text
 } from "native-base";
 import AppColor from "../assets/AppColor";
 import TitleView from "./View/TitleView";
 import AppText from "../assets/AppText";
-import LoadingView from "./View/LoadingView";
 import StoreService from "../untils/StoreService";
-import { useQuery } from "@tanstack/react-query";
 import CartsListView from "./View/Cart/CartsListView";
+import { useSelector } from "react-redux";
 
 const CartScreen = (props: any) => {
-  const userID = 1
   const navigation = props.navigation
-  const { data, isLoading } = useQuery(['UserCarts', userID], () => StoreService.getUserCarts(userID), {
-    select: data => data.data
-  })
-  const carts = data
+  const userId = useSelector((state: any) => state.users.userId)
+  const carts = useSelector((state: any) => state.carts.value)
+  const isDelete = useSelector((state: any) => state.appStates.isDeleteCart)
+  const userCarts = StoreService.getUserCarts(carts, userId)
 
   return (
     <Box
       flex = {1}
       bg = {AppColor.background}
-      width  ="100%"
+      width = "100%"
       alignSelf = "center"
     >
       <TitleView 
         titleName = {AppText.cartTitle}
+        hasDelete = {!isDelete && userId}
+        hasCancel = {isDelete && userId}
       />
       {
-        isLoading && (
-          <LoadingView/>
+        !userId && (
+          <Center
+            flex = {1}
+            marginBottom = {120}
+            paddingX = {6}
+          >
+            <Text
+              color = {AppColor.placeholder}
+              fontSize = {17}
+              fontWeight = "medium"
+            >
+              {AppText.guestCart}
+            </Text>
+          </Center>
         )
       }
       {
-        carts && (
+        userId && carts && (
           <CartsListView
-            data = {carts}
+            data = {userCarts}
             navigation = {navigation}
           />
         )

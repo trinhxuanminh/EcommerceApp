@@ -12,7 +12,8 @@ import {
 } from '@tanstack/react-query';
 import BottomTab from './src/navigators/BottomTab';
 import { Provider } from 'react-redux';
-import store from './src/reducers/store';
+import { PersistGate } from 'redux-persist/integration/react';
+import { store, persistor } from './src/reducers/store';
 
 const queryClient = new QueryClient()
 
@@ -25,7 +26,7 @@ const config = {
 const colorModeManager: StorageManager = {
   get: async () => {
     try {
-      let val = await AsyncStorage.getItem('@my-app-color-mode');
+      const val = await AsyncStorage.getItem('@my-app-color-mode');
       return val === 'dark' ? 'dark' : 'light';
     } catch (e) {
       console.log(e);
@@ -46,18 +47,23 @@ const App = () => {
     <Provider
       store = {store}
     >
-      <NativeBaseProvider
-        config = {config}
+      <PersistGate
+        loading = {null}
+        persistor = {persistor}
       >
-        <QueryClientProvider
-          client = {queryClient}
+        <NativeBaseProvider
+          config = {config}
         >
-          <StatusBar
-            barStyle = "dark-content"
-          />
-          <BottomTab/>
-        </QueryClientProvider>
-      </NativeBaseProvider>
+          <QueryClientProvider
+            client = {queryClient}
+          >
+            <StatusBar
+              barStyle = "dark-content"
+            />
+            <BottomTab/>
+          </QueryClientProvider>
+        </NativeBaseProvider>
+      </PersistGate>
     </Provider>
   )
 }

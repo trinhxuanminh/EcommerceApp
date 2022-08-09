@@ -8,10 +8,11 @@ import {
   Pressable,
   Spacer
 } from "native-base";
-import React from "react";
+import React, { useState } from "react";
 import Product from "../../../common/Product";
 import AppColor from "../../../assets/AppColor";
 import AppText from "../../../assets/AppText";
+import { Rating } from "react-native-ratings";
 
 const ProductResultView = (props: any) => {
   const navigation = props.navigation
@@ -36,7 +37,7 @@ const ProductResultView = (props: any) => {
         <Pressable
           onPress = {() => {
             navigation.navigate(AppText.productDetailScreen, {
-              productID: item.id
+              productId: item.id
             })
           }}
         >
@@ -78,7 +79,7 @@ const ProductResultView = (props: any) => {
                     fontSize = {15}
                     fontWeight = "semibold"
                     numberOfLines = {2}
-                    color = {AppColor.searchText}
+                    color = {AppColor.darkText}
                   >
                     {item.title}
                   </Text>
@@ -92,6 +93,7 @@ const ProductResultView = (props: any) => {
                   </Text>
                   <HStack
                     flex = {1}
+                    alignItems = "center"
                   >
                     <Text
                       fontSize = {14}
@@ -99,17 +101,16 @@ const ProductResultView = (props: any) => {
                       color = {AppColor.price}
                     >
                       $ {item.price}
-                  </Text>
-                  <Spacer/>
-                  <Image
-                    source = {require("../../../assets/image/add.png")}
-                    alt = "add"
-                    width = {6}
-                    height = {6}
-                    resizeMode = "contain"
-                    tintColor = {AppColor.mainTheme}
-                    alignSelf = "flex-end"
-                  />
+                    </Text>
+                    <Spacer/>
+                    <Rating
+                      type = "custom"
+                      startingValue = {item.rating.rate}
+                      imageSize = {15}
+                      showRating = {false}
+                      readonly = {true}
+                      tintColor = {AppColor.productResultItem}
+                    />
                   </HStack>
                 </VStack>
               </Box>
