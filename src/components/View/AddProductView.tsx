@@ -74,8 +74,8 @@ const AddProductView = (props: any) => {
       >
         <BlurView
           style = {AppStyle.CommonStyle.blurView}
-          blurAmount = {30}
-          blurRadius = {30}
+          blurAmount = {25}
+          blurRadius = {25}
           blurType = "dark"
           reducedTransparencyFallbackColor = {AppColor.searchBackground}
         />
