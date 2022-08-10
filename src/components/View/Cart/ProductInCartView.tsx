@@ -53,14 +53,13 @@ const ProductInCartView = (props: any) => {
       render: () => {
         return (
           <Box
-            bg = {AppColor.deleteToast}
+            bg = {AppColor.errorToast}
             rounded = "full"
             paddingY = {2}
             paddingX = {6}
-            marginTop = {70}
           >
             <Text
-              color = {AppColor.darkText}
+              color = {AppColor.lightText}
               fontSize = {17}
               fontWeight = "bold"
             >
@@ -150,6 +149,7 @@ const ProductInCartView = (props: any) => {
                     <Text
                       numberOfLines = {2}
                       height = {42}
+                      color = {AppColor.lightText}
                     >
                       {productDetail.title}
                     </Text>
@@ -175,12 +175,13 @@ const ProductInCartView = (props: any) => {
                             width = {5}
                             height = {5}
                             resizeMode = "contain"
-                            tintColor = {AppColor.mainTheme}
+                            tintColor = {AppColor.theme}
                           />
                         </Pressable>
                         <Text
                           fontSize = {15}
                           fontWeight = "semibold"
+                          color = {AppColor.lightText}
                         >
                           {quantity}
                         </Text>
@@ -193,7 +194,7 @@ const ProductInCartView = (props: any) => {
                             width = {25}
                             height = {25}
                             resizeMode = "contain"
-                            tintColor = {AppColor.mainTheme}
+                            tintColor = {AppColor.theme}
                           />
                         </Pressable>
                       </HStack>

@@ -8,7 +8,8 @@ import {
   ScrollView,
   VStack,
   Text,
-  HStack
+  HStack,
+  StatusBar
 } from "native-base";
 import StoreService from "../untils/StoreService";
 import { useQuery } from "@tanstack/react-query";
@@ -36,6 +37,9 @@ const ProductDetailScreen = (props: any) => {
       width = "100%"
       alignSelf = "center"
     >
+      <StatusBar
+        barStyle = {"dark-content"}
+      />
       <ZStack
         flex = {1}
       >
@@ -69,7 +73,7 @@ const ProductDetailScreen = (props: any) => {
                   />
                   <Text
                     textAlign = "center"
-                    color = {AppColor.text}
+                    color = {AppColor.lightText}
                     fontWeight = "semibold"
                     fontSize = {"3xl"}
                     marginX = {4}
@@ -77,7 +81,7 @@ const ProductDetailScreen = (props: any) => {
                     {productDetail.title}
                   </Text>
                   <Text
-                    color = {AppColor.placeholder}
+                    color = {AppColor.placeholderText}
                     alignSelf = "center"
                   >
                     - {productDetail.category} -
@@ -99,12 +103,12 @@ const ProductDetailScreen = (props: any) => {
                         type = 'custom'
                         startingValue = {productDetail.rating.rate}
                         imageSize = {20}
-                        ratingColor = {AppColor.mainTheme}
+                        ratingColor = {AppColor.theme}
                         showRating = {false}
                         readonly = {true}
                       />
                       <Text
-                        color = {AppColor.placeholder}
+                        color = {AppColor.placeholderText}
                       >
                         ({productDetail.rating.count})
                       </Text>
@@ -144,7 +148,7 @@ const ProductDetailScreen = (props: any) => {
                 borderRadius = {"md"}
                 marginTop = {100}
                 marginX = {4}
-                bg = {AppColor.addToCartDetail}
+                bg = {AppColor.theme}
                 style = {AppStyle.ProductDetailStyle.addToCart}
                 justifyContent = "center"
                 bottom = {insets.bottom + 10}
@@ -156,7 +160,7 @@ const ProductDetailScreen = (props: any) => {
                     fontWeight = {"bold"}
                     fontSize = {18}
                     marginLeft = {5}
-                    color = {AppColor.addToCartText}
+                    color = {AppColor.darkText}
                   >
                     Add to cart
                   </Text>
@@ -186,11 +190,11 @@ const ProductDetailScreen = (props: any) => {
           <Image
             source = {require("../assets/image/back.png")}
             resizeMode = "contain"
-            width = {6}
-            height = {6}
+            width = {8}
+            height = {8}
             marginLeft = {4}
             marginTop = {2}
-            tintColor = {AppColor.searchTint}
+            tintColor = {AppColor.theme}
             alt = "search"
           />
         </Pressable>

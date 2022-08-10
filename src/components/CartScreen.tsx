@@ -21,14 +21,20 @@ const CartScreen = (props: any) => {
   return (
     <Box
       flex = {1}
-      bg = {AppColor.background}
+      bg = {{
+        linearGradient: {
+          colors: [AppColor.gradient1, AppColor.gradient2],
+          start: [1, 1],
+          end: [0, 0.5]
+        }
+      }}
       width = "100%"
       alignSelf = "center"
     >
       <TitleView 
         titleName = {AppText.cartTitle}
-        hasDelete = {!isDelete && userId}
-        hasCancel = {isDelete && userId}
+        hasDelete = {!isDelete && !!userId}
+        hasCancel = {isDelete && !!userId}
       />
       {
         !userId && (
@@ -38,7 +44,7 @@ const CartScreen = (props: any) => {
             paddingX = {6}
           >
             <Text
-              color = {AppColor.placeholder}
+              color = {AppColor.placeholderMessage}
               fontSize = {17}
               fontWeight = "medium"
             >
@@ -48,7 +54,7 @@ const CartScreen = (props: any) => {
         )
       }
       {
-        userId && carts && (
+        !!userId && carts && (
           <CartsListView
             data = {userCarts}
             navigation = {navigation}

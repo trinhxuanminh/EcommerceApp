@@ -59,7 +59,7 @@ const SearchView = () => {
             justifyContent = "center"
             alignItems = "center"
             placeholder = {AppText.searchPlaceholder}
-            placeholderTextColor = {AppColor.placeholder}
+            placeholderTextColor = {AppColor.placeholderText}
             fontSize = {18}
             color = {AppColor.darkText}
             onChangeText = {setQuery}

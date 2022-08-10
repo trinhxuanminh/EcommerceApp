@@ -48,7 +48,13 @@ const SettingScreen = (props: any) => {
 
   return (
     <Box
-      bg = {AppColor.background}
+      bg = {{
+        linearGradient: {
+          colors: [AppColor.gradient1, AppColor.gradient2],
+          start: [1, 1],
+          end: [0, 0.5]
+        }
+      }}
       width = "100%"
       height = "100%"
       alignSelf = "center"
@@ -73,17 +79,18 @@ const SettingScreen = (props: any) => {
               _text = {{
                 fontSize: 18,
                 fontWeight: "semibold",
-                color: "white"
+                color: AppColor.lightText
               }}
-              bg = {AppColor.mainTheme}
+              bg = {AppColor.gradient1}
               onPress = {handleLogin}
+              borderRadius = "md"
             >
               {AppText.logIn}
             </Button>
           )
         }
         {
-          userId && (
+          !!userId && (
             <VStack
               width = "100%"
               height = "100%"
@@ -108,7 +115,7 @@ const SettingScreen = (props: any) => {
                       {getAcronymName()}
                     </Avatar>
                     <Text
-                      color = {AppColor.text}
+                      color = {AppColor.lightText}
                       fontSize = {18}
                       fontWeight = "medium"
                     >
@@ -143,7 +150,7 @@ const SettingScreen = (props: any) => {
                     alt = "logOut"
                   />
                   <Text
-                    color = {AppColor.text}
+                    color = {AppColor.lightText}
                     fontSize = {18}
                     fontWeight = "semibold"
                   >

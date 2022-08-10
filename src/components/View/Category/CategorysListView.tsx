@@ -20,6 +20,7 @@ const CategorysListView = (props: any) => {
       flex = {1}
       paddingTop = {2}
       paddingX = {6}
+      showsVerticalScrollIndicator = {false}
       keyExtractor = {(item: string) => item}
       ListFooterComponent = {
         <Box
@@ -38,7 +39,7 @@ const CategorysListView = (props: any) => {
         >
           <Center
             marginY = {2}
-            bg = {AppColor.productItem}
+            bg = {AppColor.categoryItem}
             flex = {1}
             height = {heightItem}
             borderRadius = {10}
@@ -47,6 +48,7 @@ const CategorysListView = (props: any) => {
             <Text
               fontSize = {16}
               fontWeight = "bold"
+              color = {AppColor.lightText}
             >
               {item}
             </Text>

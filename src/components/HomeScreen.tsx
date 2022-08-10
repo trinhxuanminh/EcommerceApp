@@ -20,7 +20,13 @@ const HomeScreen = (props: any) => {
   return (
     <Box
       flex = {1}
-      bg = {AppColor.background}
+      bg = {{
+        linearGradient: {
+          colors: [AppColor.gradient1, AppColor.gradient2],
+          start: [1, 1],
+          end: [0, 0.5]
+        }
+      }}
       width = "100%"
       alignSelf = "center"
     >

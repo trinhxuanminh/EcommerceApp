@@ -4,7 +4,7 @@ import AppColor from "../assets/AppColor";
 const CommonStyle = StyleSheet.create(
   {
     tabBar: {
-      backgroundColor: AppColor.tabBar,
+      backgroundColor: "transparent",
       position: "absolute",
       elevation: 0,
       height: 90,

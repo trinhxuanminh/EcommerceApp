@@ -40,14 +40,13 @@ const AddProductView = (props: any) => {
       render: () => {
         return (
           <Box
-            bg = {AppColor.addToast}
+            bg = {AppColor.successToast}
             rounded = "full"
             paddingY = {2}
             paddingX = {6}
-            marginTop = {70}
           >
             <Text
-              color = {AppColor.text}
+              color = {AppColor.lightText}
               fontSize = {17}
               fontWeight = "bold"
             >
@@ -104,7 +103,7 @@ const AddProductView = (props: any) => {
                       fontSize = {18}
                       fontWeight = "medium"
                       textAlign = "center"
-                      color = {AppColor.text}
+                      color = {AppColor.lightText}
                       paddingX = {6}
                     >
                       {AppText.guestAddCart}
@@ -116,9 +115,9 @@ const AddProductView = (props: any) => {
                       _text = {{
                         fontSize: 18,
                         fontWeight: "semibold",
-                        color: "white"
+                        color: AppColor.lightText
                       }}
-                      bg = {AppColor.mainTheme}
+                      bg = {AppColor.theme}
                       onPress = {hideView}
                     >
                       {AppText.acceptAction}
@@ -128,7 +127,7 @@ const AddProductView = (props: any) => {
               )
             }
             {
-              userId && (
+              !!userId && (
                 <Box
                   width = {300}
                   height = {410}
@@ -147,7 +146,7 @@ const AddProductView = (props: any) => {
                         fontWeight = "bold"
                         fontSize = {22}
                         textAlign = "center"
-                        color = {AppColor.text}
+                        color = {AppColor.lightText}
                         marginLeft = {7}
                       >
                         {AppText.addProductTitle}
@@ -160,7 +159,7 @@ const AddProductView = (props: any) => {
                           resizeMode = "contain"
                           width = {7}
                           height = {7}
-                          tintColor = {AppColor.searchTint}
+                          tintColor = {AppColor.lightTint}
                           alt = "cancel"
                         />
                       </Pressable>
@@ -187,7 +186,7 @@ const AddProductView = (props: any) => {
                       width = "100%"
                       numberOfLines = {2}
                       fontSize = {18}
-                      color = {AppColor.text}
+                      color = {AppColor.lightText}
                     >
                       {product.title}
                     </Text>
@@ -214,7 +213,7 @@ const AddProductView = (props: any) => {
                           width = {5}
                           height = {5}
                           resizeMode = "contain"
-                          tintColor = {focusMinus ? AppColor.mainTheme : AppColor.deselectTab}
+                          tintColor = {focusMinus ? AppColor.theme : AppColor.disable}
                         />
                       </Pressable>
                       <Text
@@ -232,7 +231,7 @@ const AddProductView = (props: any) => {
                           width = {25}
                           height = {25}
                           resizeMode = "contain"
-                          tintColor = {AppColor.mainTheme}
+                          tintColor = {AppColor.theme}
                         />
                       </Pressable>
                     </HStack>
@@ -245,7 +244,7 @@ const AddProductView = (props: any) => {
                         fontWeight: "semibold",
                         color: "white"
                       }}
-                      bg = {AppColor.mainTheme}
+                      bg = {AppColor.theme}
                       onPress = {() => handleAddProduct()}
                     >
                       {AppText.addAction}

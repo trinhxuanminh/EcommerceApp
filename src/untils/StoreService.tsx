@@ -25,6 +25,17 @@ const StoreService: Service = {
     return axios.get(`https://fakestoreapi.com/users/${id}`)
   },
 
+  async getAllUser() {
+    return axios.get(`https://fakestoreapi.com/users`)
+  },
+
+  async login(username: string, password: string) {
+    return axios.post('https://fakestoreapi.com/auth/login', {
+      username: username,
+      password: password
+    })
+  },
+
   searchProduct(products: Product[], query: string) {
     if (!query || /^\s*$/.test(query)) {
       return []
@@ -34,8 +45,8 @@ const StoreService: Service = {
     })
   },
 
-  getUserCarts(carts: Cart[], userId: number) {
-    if (isNaN(userId)) {
+  getUserCarts(carts: Cart[], userId: number|null) {
+    if (!userId) {
       return []
     }
     return carts.filter((cart) => {
@@ -43,8 +54,8 @@ const StoreService: Service = {
     })
   },
 
-  getProductLengthInCart(carts: Cart[], userId: number) {
-    if (isNaN(userId)) {
+  getProductLengthInCart(carts: Cart[], userId: number|null) {
+    if (!userId) {
       return 0
     }
     const userCarts = this.getUserCarts(carts, userId)
@@ -53,6 +64,16 @@ const StoreService: Service = {
       count += cart.products.length
     })
     return count
+  },
+
+  getUserId(users: any, username: string) {
+    const filterUsers = users.filter((user: any) => {
+      return user.username == username
+    })
+    if (filterUsers.length == 0) {
+      return null
+    }
+    return filterUsers[0].id
   }
 }
 

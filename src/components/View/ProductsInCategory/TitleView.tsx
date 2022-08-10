@@ -17,7 +17,7 @@ const TitleView = (props: any) => {
 
   return (
     <Box
-      bg = {AppColor.mainTheme}
+      bg = {AppColor.title}
       style = {AppStyle.CommonStyle.titleScreen}
     >
       <Box
@@ -38,7 +38,7 @@ const TitleView = (props: any) => {
             resizeMode = "contain"
             width = {6}
             height = {6}
-            tintColor = {AppColor.searchTint}
+            tintColor = {AppColor.lightTint}
             alt = "back"
           />
         </Pressable>
@@ -47,7 +47,7 @@ const TitleView = (props: any) => {
           height = {10}
           flex = {1}
           fontWeight = "bold"
-          color = {AppColor.text}
+          color = {AppColor.lightText}
           marginRight = {6}
           textAlign = "center"
         >

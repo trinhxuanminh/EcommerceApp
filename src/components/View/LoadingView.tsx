@@ -3,6 +3,7 @@ import {
   Box,
   Spinner
 } from "native-base";
+import AppColor from "../../assets/AppColor";
 
 const LoadingView = () => {
   return (
@@ -13,6 +14,7 @@ const LoadingView = () => {
     >
       <Spinner
         bottom = {60}
+        color = {AppColor.spinner}
         accessibilityLabel = "Loading posts"
       />
     </Box>

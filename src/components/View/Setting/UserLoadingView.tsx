@@ -3,6 +3,7 @@ import {
   Box,
   Spinner
 } from "native-base";
+import AppColor from "../../../assets/AppColor";
 
 const UserLoadingView = () => {
   return (
@@ -13,6 +14,7 @@ const UserLoadingView = () => {
       alignItems = "center"
     >
       <Spinner
+        color = {AppColor.spinner}
         accessibilityLabel = "Loading posts"
       />
     </Box>

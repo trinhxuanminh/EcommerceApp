@@ -1,4 +1,5 @@
 const AppText = {
+  appName: "Store",
   homeTitle: "Store",
   categoryTitle: "Category",
   cartTitle: "Cart",
@@ -27,6 +28,7 @@ const AppText = {
 
   deletedToast: "Deleted!",
   addedToast: "Succeeded!",
+  loginToast: "Invalid account information!",
   guestCart: "Please login to view your shopping cart!",
   guestAddCart: "Please login to add to your cart!",
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createBottomTabNavigator, BottomTabBar } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from "@react-navigation/native";
 import { 
   VStack, 
@@ -17,6 +17,7 @@ import CartNavigator from "./CartNavigator";
 import { useSelector } from "react-redux";
 import StoreService from "../untils/StoreService";
 import SettingNavigator from "./SettingNavigator";
+import LinearGradient from "react-native-linear-gradient";
 
 const Tab = createBottomTabNavigator()
 
@@ -67,11 +68,11 @@ const BottomTab = () => {
                 >
                   <FontAwesome5Icon
                     name = {iconName}
-                    color = {focused ? AppColor.mainTheme : AppColor.deselectTab}
+                    color = {AppColor.tab}
                     size = {20}
                   />
                   {
-                    userId && (route.name == AppText.cartNavigator) && (
+                    !!userId && (route.name == AppText.cartNavigator) && (cartBadge != 0) && (
                       <Center
                         bg = {AppColor.cartBadge}
                         width = {5}
@@ -94,7 +95,7 @@ const BottomTab = () => {
                 {
                   focused && (
                     <Text
-                  color = {focused ? AppColor.mainTheme : AppColor.deselectTab}
+                  color = {AppColor.tab}
                   fontSize = "xs"
                 >
                   {route.name}
@@ -106,7 +107,25 @@ const BottomTab = () => {
           },
           headerShown: false,
           tabBarShowLabel: false,
-          tabBarStyle: AppStyle.CommonStyle.tabBar
+          tabBarStyle: AppStyle.CommonStyle.tabBar,
+          tabBarBackground: () =>(
+            <LinearGradient  
+              colors = {[AppColor.gradient1, AppColor.gradient2]}
+              start = {
+                {
+                  x: 0,
+                  y: 0
+                }
+              }
+              end = {
+                {
+                  x: 1,
+                  y: 1
+                }
+              }
+              style = {AppStyle.GradientStyle.tabBar}
+            />
+          )
         })}
       >
         <Tab.Screen

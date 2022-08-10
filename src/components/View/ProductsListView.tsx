@@ -39,6 +39,7 @@ const ProductsListView = (props: any) => {
         paddingX = {2}
         keyExtractor = {(item: Product) => String(item.id)}
         numColumns = {2}
+        showsVerticalScrollIndicator = {false}
         ListFooterComponent = {
           <Box
             height = {32}
@@ -80,7 +81,7 @@ const ProductsListView = (props: any) => {
                   resizeMode = "contain"
                 />
                 <Text
-                  color = {AppColor.text}
+                  color = {AppColor.lightText}
                   fontSize = "16"
                   numberOfLines = {1}
                   textAlign = "left"
@@ -114,7 +115,7 @@ const ProductsListView = (props: any) => {
                       height = {6}
                       marginRight = {2}
                       resizeMode = "contain"
-                      tintColor = {AppColor.mainTheme}
+                      tintColor = {AppColor.theme}
                     />
                   </Pressable>
                 </HStack>

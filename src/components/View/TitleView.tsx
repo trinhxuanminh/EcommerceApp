@@ -31,7 +31,7 @@ const TitleView = (props: any) => {
 
   return (
     <Box
-      bg = {AppColor.homeTitle}
+      bg = {AppColor.title}
       style = {AppStyle.CommonStyle.titleScreen}
     >
       <Box
@@ -47,7 +47,7 @@ const TitleView = (props: any) => {
           height = {12}
           flex = {1}
           fontWeight = "bold"
-          color = {AppColor.mainTheme}
+          color = {AppColor.lightText}
         >
           {titleName}
         </Text>
@@ -64,7 +64,7 @@ const TitleView = (props: any) => {
                 width = {6}
                 height = {6}
                 marginTop = {3}
-                tintColor = {AppColor.searchTint}
+                tintColor = {AppColor.lightTint}
                 alt = "search"
               />
             </Pressable>
@@ -81,7 +81,7 @@ const TitleView = (props: any) => {
                 width = {6}
                 height = {6}
                 marginTop = {3}
-                tintColor = {AppColor.searchTint}
+                tintColor = {AppColor.lightTint}
                 alt = "delete"
               />
             </Pressable>
@@ -98,7 +98,7 @@ const TitleView = (props: any) => {
                 width = {6}
                 height = {6}
                 marginTop = {3}
-                tintColor = {AppColor.searchTint}
+                tintColor = {AppColor.lightTint}
                 alt = "cancel"
               />
             </Pressable>

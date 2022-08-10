@@ -8,8 +8,11 @@ interface Service {
   getProductDetail(id: number): any
   searchProduct(products: Product[], query: string): any
   getUserDetail(id: Number): any
+  getAllUser(): any
+  login(username: string, password: string): any
   getUserCarts(carts: Cart[], userId: number): Cart[]
   getProductLengthInCart(carts: Cart[], userId: number): number
+  getUserId(users: any, username: string): number|null
 }
 
 export default Service
