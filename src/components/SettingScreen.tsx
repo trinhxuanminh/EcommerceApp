@@ -79,7 +79,7 @@ const SettingScreen = (props: any) => {
               _text = {{
                 fontSize: 18,
                 fontWeight: "semibold",
-                color: AppColor.lightText
+                color: AppColor.darkText
               }}
               bg = {AppColor.gradient1}
               onPress = {handleLogin}

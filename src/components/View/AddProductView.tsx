@@ -115,7 +115,7 @@ const AddProductView = (props: any) => {
                       _text = {{
                         fontSize: 18,
                         fontWeight: "semibold",
-                        color: AppColor.lightText
+                        color: AppColor.darkText
                       }}
                       bg = {AppColor.theme}
                       onPress = {hideView}
@@ -242,7 +242,7 @@ const AddProductView = (props: any) => {
                       _text = {{
                         fontSize: 18,
                         fontWeight: "semibold",
-                        color: "white"
+                        color: AppColor.darkText
                       }}
                       bg = {AppColor.theme}
                       onPress = {() => handleAddProduct()}

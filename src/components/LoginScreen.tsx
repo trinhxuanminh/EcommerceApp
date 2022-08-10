@@ -229,7 +229,7 @@ const LoginScreen = (props: any) => {
             _text = {{
               fontSize: 18,
               fontWeight: "semibold",
-              color: AppColor.lightText
+              color: AppColor.darkText
             }}
             bg = {AppColor.theme}
             onPress = {handleLoadToken}
